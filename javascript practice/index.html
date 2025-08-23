@@ -1,0 +1,229 @@
+<!-- 1. Change the text of a paragraph using JavaScript.
+2. Update the 'src' attribute of an image when a button is clicked.
+3. Change the background color of a div when a button is clicked.
+4. Toggle visibility of a div using JavaScript (show/hide).
+5. Add a new <li> item to an existing list dynamically.
+6. Delete a specific HTML element using JavaScript.
+7. Add a CSS class to a paragraph on button click.
+8. Display the value entered in a form input inside a <div>.
+9. Change the font size of text using buttons (increase/decrease).
+10. Show live character count as the user types in a textarea.
+11. Create a basic to-do list (add, mark done, delete items).
+12. Make an accordion that shows/hides content on header click.
+13. Create an image gallery with next and previous buttons.
+14. Create a dynamic table where rows can be added or removed.
+15. Implement a dark mode toggle using classList.toggle().
+16. Filter a list of items as user types in a search box.
+17. Create a dropdown menu that shows/hides submenus.
+18. Validate a form to highlight empty required fields in red.
+19. Build a simple image slideshow or carousel.
+20. Use event delegation to handle click events on list items. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .mystyle{
+        background-color: bisque;
+        width: 100px;
+    }
+    .unvis{
+        display: none      ;
+    }
+    .vis{
+        display:block;
+
+    }
+    .black{
+        background-color: black;
+    }
+</style>
+<input>
+   <button id="toggle">toggle</button>
+    <div class="container">
+        <p id="changepara">i am  the tushar </p>
+        <button onClick="changep() ,changebg()"> change paragraph</button>
+    </div>
+    <br>
+    <div>
+        <img src="./on.jpg" alt="on/off image" id="img">
+        <br>
+        <button onClick="onoff()">off bulb</button>
+    </div>
+    <ul id="items">
+        <li >fruits</li>
+        <li>mango</li>
+    </ul>
+        <input type="text" id="fruit" placeholder="enter fruit">
+        <button onclick="add()">add item</button>
+
+        <button class="changefont">change font</button>
+
+        <input id="count" type="text">
+
+
+
+        <div class="vis"> hello check me</div>
+        <div class="unvis">i am pursuring the B tech</div>
+
+<div class="imagesgall"></div>
+<img id="gallery" src="off.jpg" width="300" height="200">
+
+  <br><br>
+
+  <button id="prev">Previous</button>
+  <button id="next">Next</button>
+  <h3>Search Items:</h3>
+  <input type="text" id="searchBox" placeholder="Type to search...">
+
+  <ul id="itemList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <li>Date</li>
+    <li>Grapes</li>
+    <li>Mango</li>
+    <li>Orange</li>
+    <li>Pineapple</li>
+    <li>Strawberry</li>
+  </ul>
+
+
+
+  <li>
+    <button onclick="toggleMenu('submenu1')">Fruits</button>
+    <ul id="submenu1" style="display:none;">
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Mango</li>
+    </ul>
+  </li>
+
+
+
+  <h3>Choose a Color</h3>
+  <ul id="colorList">
+    <li>Red</li>
+    <li>Green</li>
+    <li>Blue</li>
+    <li>Yellow</li>
+    <li>Purple</li>
+  </ul>
+
+
+
+  
+    </body>
+
+    <script>
+
+        const colorList = document.getElementById('colorList');
+
+        colorList.addEventListener('click', function(event) {
+          if (event.target && event.target.tagName === 'LI') {
+            alert('You selected: ' + event.target.textContent);
+          }
+        });
+    
+
+        function toggleMenu(id) {
+            const submenu = document.getElementById(id);
+            submenu.style.display = submenu.style.display === 'none' ? 'block' : 'none';
+          }
+      
+
+
+        const searchBox = document.getElementById('searchBox');
+        const itemList = document.getElementById('itemList');
+        const items = itemList.getElementsByTagName('li');
+    
+        searchBox.addEventListener('input', function() {
+          const query = this.value.toLowerCase();
+          for (let item of items) {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(query) ? '' : 'none';
+          }
+        });
+    
+
+
+
+        document.getElementById("toggle").addEventListener('click',()=>{
+            document.querySelector('body').classList.toggle('black');
+        })
+        const id=document.getElementById("items");
+id.addEventListener("click",(event)=>{
+    if(event.target.tagName==="LI")
+    {event.target.remove();
+    }
+})
+ document.querySelector(".vis").addEventListener('click',()=>
+ {
+    document.getElementsByClassName("unvis")[0].classList.toggle("vis");
+ })
+
+ let images = [
+ "off.jpg",
+ "on.jpg",
+ "off.jpg"
+];
+
+let index = 0; 
+let imgTag = document.getElementById("gallery");
+
+document.getElementById("next").addEventListener("click", () => {
+ index = (index + 1) % images.length; 
+ imgTag.src = images[index];
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+ index = (index - 1 + images.length) % images.length; 
+ imgTag.src = images[index];
+});
+    </script>
+    <script>
+        // 1. Change the text of a paragraph using JavaScript.
+        function changep()
+        {
+        const para=document.getElementById("changepara").innerHTML="i am the artist";
+        }
+        //2. Update the 'src' attribute of an image when a button is clicked.
+        function onoff()
+        {
+            document.getElementById("img").src="./off.jpg";
+        }
+        //3. Change the background color of a div when a button is clicked.
+       // 4. Toggle visibility of a div using JavaScript (show/hide).
+        function changebg()
+        {
+           // document.querySelector("div").style.backgroundColor="pink";
+           element=document.getElementById("changepara");
+            element.classList.toggle("mystyle");
+        }
+function add()
+{
+    item=document.getElementById("fruit").value;
+    newli=document.createElement("li");
+    newli.innerHTML=item;
+    document.getElementById("items").appendChild(newli);
+}
+ document.querySelector(".changefont").addEventListener('click',()=>
+ {
+    document.getElementById('changepara').style.fontSize="22px";
+ })
+
+ document.querySelector('#count').addEventListener('input',()=>
+ {
+  let c=event.target.value.length;
+  console.log(c);
+ })
+
+ document.querySelector('.imagesgall').addEventListener('click',()=>{
+
+ })
+    </script>
+</body>
+</html>
