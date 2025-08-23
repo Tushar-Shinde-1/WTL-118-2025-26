@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Today-ONLY</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-cover bg-center" style="background-image: url('background.jpg')">
+
+  <div class="flex justify-center ">
+    <div
+      class="w-full max-w-4xl  shadow-xl mx-4 sm:mx-6 md:mx-10 max-w-4xl p-7 mt-6 bg-blue-50 text-center  rounded-xl">
+      <h2 class="font-bold text-2xl text-violet-800 xl:text-4xl">Not Tommorow,<span class="text-green-600"> TODAY</span>
+        Only</h2>
+    </div>
+
+  </div>
+  <div class=" flex justify-center px-2 ">
+    <div
+      class="flex  flex-col items-center justify-center bg-white mt-20  w-full max-w-5xl p-4 px-2 sm:px-9 sm:p-6   shadow-md rounded-xl">
+      <div class="flex flex-row w-full">
+        <div class="flex-[4]" id="input">
+          <input id="inputtask" type="text"
+            class="hover:bg-blue-100 focus:ring-1 focus:ring-blue-300 focus:outline-none w-full border border-gray-300 rounded-lg p-2 "
+            placeholder="enter your task">
+        </div>
+
+        <button
+          class=" flex-[1] ml-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600"
+          id="submit">
+          <span class="hidden md:block">Add</span>
+          <span class="block md:hidden text-xl">+</span>
+        </button>
+
+      </div>
+      <div id="to-do-list" class="w-full mt-4">
+        <div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    let accept = document.getElementById("submit");
+    accept.addEventListener("click", function () {
+      let tasks = document.getElementById("to-do-list");
+      let task = document.getElementById("inputtask").value;
+      document.getElementById("inputtask").value = "";
+      //alert(task);
+      if (task === "") {
+        alert("Please enter a task");
+      }
+      else {
+        let addlist = document.createElement("div");
+        let cancel = document.createElement("button");
+        let cont = document.createElement("div");
+        let check = document.createElement("input");
+        check.type = "checkbox";
+        check.className = "mt-6 mb-0 accent-green-500 w-4 h-5";
+        cont.className = "flex flex-row flex-wrap w-full gap-4 falign-center ";
+
+        cancel.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12" />
+  </svg>`;
+
+
+        cancel.className = "justify-center items-center mt-3";
+        addlist.innerHTML = `<div class=" changetext  break-all break-words hover:bg-blue-50 focus:ring-1 focus:ring-blue-300 focus:outline-none w-full border border-gray-300 mt-3 rounded-md p-2 bg-blue-50" id="item">${task} </div>`;
+
+        check.addEventListener("click", function () {
+          let item = addlist.querySelector("#item");
+          item.classList.toggle("line-through");
+        });
+
+
+        cont.append(check);
+        cont.append(addlist);
+        cont.append(cancel);
+
+        tasks.append(cont);
+        cancel.addEventListener("click", function () {
+          <!-- alert("ram"); -->
+          let getcont = document.getElementById("item").textContent;
+          
+          cont.remove();
+
+
+        });
+        addlist.addEventListener("dblclick", function () {
+          alert("ram");
+
+        });
+
+        addlist.addEventListener("click", function () {
+          if (check.checked) return;
+          let getcont = event.target.textContent
+          //alert(getcont);
+          let editbox = document.createElement("input");
+          editbox.className = "changetext  hover:bg-blue-50 focus:ring-1 focus:ring-blue-300 focus:outline-none w-full border border-gray-300 mt-3 rounded-md p-2 bg-blue-50";
+          editbox.value = getcont;
+          let olddiv = event.target;
+          olddiv.replaceWith(editbox);
+          editbox.focus();
+          editbox.addEventListener("blur", function () {
+            let newtext = editbox.value;
+            let addlist = document.createElement("div");
+            addlist.innerHTML = `<div class="changetext break-all break-words hover:bg-blue-50 focus:ring-1 focus:ring-blue-300 focus:outline-none w-full border border-gray-300 mt-3 rounded-md p-2 bg-blue-50" id="item"  > ${newtext}
+  </div>`;
+            editbox.replaceWith(addlist);
+          })
+          // cont.remove();
+        })
+
+      }
+
+    }
+    )
+
+  </script>
+</body>
+
+</html>
