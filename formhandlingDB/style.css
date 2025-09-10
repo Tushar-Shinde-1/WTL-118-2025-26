@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+h1{
+    font-size: 55px;
+}
+.buttons {
+    width: 25%;
+    background-color: rgb(170, 135, 176);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    gap: 20px;
+    box-sizing: border-box;
+}
+.buttons div{
+    margin-top: 200px;
+    
+    
+}
+.buttons button {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #ffffff;
+}
+.buttons button:hover {
+    transform: scale(1.01);  
+    background-color: #71718a;
+    color: #ffffff;
+     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); 
+}
+.main-content {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+
+}
+.form-section {
+    display: none;
+}
+
+
+.form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
