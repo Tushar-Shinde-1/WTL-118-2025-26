@@ -1,3 +1,7 @@
+// DO NOT USE THIS FILE FOR THE RESULT 
+//IT IS ONLY FOR SIMPLE LOGICAL UNDERSTANDING IN SIMPE WAY
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,4 +146,5 @@ function display()
 }
 </script>
 </body>
+
 </html>
